@@ -20,7 +20,7 @@ load_dotenv()
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from fastapi.responses import FileResponse
-from fastapi.staticfiles import StaticFiles
+# from fastapi.staticfiles import StaticFiles
 import traceback
 
 from transcript_processor import TranscriptProcessor
@@ -37,7 +37,7 @@ app = FastAPI(
 # --------------------------------------------------
 # Serve Frontend (IMPORTANT)
 # --------------------------------------------------
-app.mount("/static", StaticFiles(directory="frontend"), name="static")
+# app.mount("/static", StaticFiles(directory="frontend"), name="static")
 
 
 @app.get("/")
