@@ -27,14 +27,21 @@
 from datetime import datetime, timedelta
 from jose import jwt
 from passlib.context import CryptContext
+import os
 
-SECRET_KEY = "dev-secret-key"  # move to env later
+# ================= SECURITY CONFIG =================
+SECRET_KEY = os.getenv("SECRET_KEY", "dev-secret-key")  # safe default for dev
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 60 * 24
 
-pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
+# ================= PASSWORD HASHING =================
+# pbkdf2_sha256 is stable on Python 3.13 + Render
+pwd_context = CryptContext(
+    schemes=["pbkdf2_sha256"],
+    deprecated="auto"
+)
 
-
+# ================= HELPERS =================
 def hash_password(password: str) -> str:
     return pwd_context.hash(password)
 
@@ -43,7 +50,7 @@ def verify_password(plain: str, hashed: str) -> bool:
     return pwd_context.verify(plain, hashed)
 
 
-def create_access_token(data: dict):
+def create_access_token(data: dict) -> str:
     to_encode = data.copy()
     expire = datetime.utcnow() + timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
     to_encode.update({"exp": expire})
