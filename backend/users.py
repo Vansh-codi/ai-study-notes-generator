@@ -1,12 +1,11 @@
 # backend/users.py
-from auth import hash_password
-
+# still safe to import
 
 fake_users_db = {
     "test@example.com": {
         "email": "test@example.com",
         "name": "Test User",
-        "hashed_password": hash_password("demo_password_only"),
-
+        # pre-generated hash (DO NOT hash here)
+        "hashed_password": "$2b$12$REPLACE_WITH_YOUR_HASH",
     }
 }
