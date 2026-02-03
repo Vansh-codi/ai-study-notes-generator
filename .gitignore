@@ -1,0 +1,20 @@
+# ===== ENV / SECRETS =====
+code .gitignore
+
+.env
+venv/
+
+# ===== PYTHON =====
+__pycache__/
+.pytest_cache/
+*.pyc
+
+# ===== NODE =====
+node_modules/
+dist/
+output/
+
+# ===== OS / EDITOR =====
+.vscode/
+.idea/
+.DS_Store
