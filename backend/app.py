@@ -1,10 +1,10 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
-# from auth import verify_password, create_access_token , hash_password
+from auth import verify_password, create_access_token , hash_password
 
-# from users import fake_users_db
-from backend.auth import verify_password, create_access_token, hash_password
-from backend.users import fake_users_db
+from users import fake_users_db
+# from backend.auth import verify_password, create_access_token, hash_password
+# from backend.users import fake_users_db
 
 
 
