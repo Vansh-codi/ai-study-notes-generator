@@ -62,16 +62,27 @@ export default function Dashboard({ view = "dashboard" }) {
     setQuiz("");
     setMode("");
 
-    try {
-      const res = await fetch("http://127.0.0.1:8000/generate", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          transcript,
-          generate_quiz: true,
-          num_questions: 3,
-        }),
-      });
+     try {
+        const API_BASE = "https://ai-study-notes-generator-15.onrender.com";
+        const res = await fetch(`${API_BASE}/generate`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            transcript,
+            generate_quiz: true,
+            num_questions: 3,
+          }),
+        });
+
+    //   const res = await fetch("http://127.0.0.1:8000/generate", {
+    //     method: "POST",
+    //     headers: { "Content-Type": "application/json" },
+    //     body: JSON.stringify({
+    //       transcript,
+    //       generate_quiz: true,
+    //       num_questions: 3,
+    //     }),
+    //   });
 
       const data = await res.json();
 
