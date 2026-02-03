@@ -1,5 +1,5 @@
 # backend/users.py
-from backend.auth import hash_password
+from auth import hash_password
 
 
 fake_users_db = {
