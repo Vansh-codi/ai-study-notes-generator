@@ -66,7 +66,10 @@ export default function Dashboard({ view = "dashboard" }) {
         const API_BASE = "https://ai-study-notes-generator-15.onrender.com";
         const res = await fetch(`${API_BASE}/generate`, {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
+          headers: { "Content-Type": "application/json",
+             Authorization: `Bearer ${localStorage.getItem("token")}`,
+            
+           },
           body: JSON.stringify({
             transcript,
             generate_quiz: true,
